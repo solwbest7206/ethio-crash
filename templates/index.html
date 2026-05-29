@@ -1,5 +1,22 @@
-<select id="betAmount">
-    <option value="5">5 Birr</option>
-    <option value="25">25 Birr</option>
-</select>
-<button onclick="play()">Taphadhu</button>
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Ethio-Crash: Touch and Win</h1>
+    <input type="number" id="amount" placeholder="5 or 25 Birr">
+    <div id="numbers">Lakkofsa 4 filadhu (1-15)</div>
+    <button onclick="play()">Taphadhu</button>
+    <div id="result"></div>
+    <script>
+        async function play() {
+            let amount = document.getElementById('amount').value;
+            let res = await fetch('/play_win', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({amount: amount, numbers: [1, 2, 3, 4]})
+            });
+            let data = await res.json();
+            document.getElementById('result').innerText = "Payout: " + data.payout;
+        }
+    </script>
+</body>
+</html>
