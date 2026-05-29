@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head><title>Ethio-Crash</title></head>
-<body>
-    <h1>Ethio-Crash Arena</h1>
-    <div id="game-ui">
-        <input type="number" id="betAmount" placeholder="Amount (Birr)">
-        <button onclick="startGame()">Start Bet</button>
-        <h2 id="multiplier">1.00x</h2>
-    </div>
-
-    <script>
-        async function startGame() {
-            let res = await fetch('/play', {method: 'POST', body: JSON.stringify({amount: 500}), headers: {'Content-Type': 'application/json'}});
-            let data = await res.json();
-            alert("Taphni " + data.crash_point + "x irratti dhaabbate!");
-        }
-    </script>
-</body>
-</html>
+<select id="betAmount">
+    <option value="5">5 Birr</option>
+    <option value="25">25 Birr</option>
+</select>
+<button onclick="play()">Taphadhu</button>
